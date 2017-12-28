@@ -1,0 +1,15 @@
+<%= form_tag admin_prizes_path(@prize.id) do %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="name"">Name</label>
+        <%= text_field_tag :name, @prize.name, class: "form-control", required: true %>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <%= number_field_tag :quantity, @prize.quantity, class: "form-control", required: true %>
+      </div>
+      <%= submit_tag "Submit", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
