@@ -1,0 +1,39 @@
+<main class="container mt-5">
+  <div class="row">
+    <div class="col-sm-9 bd-content">
+      <h2 class="bd-title">List of prize conditions</h2>
+    </div>
+    <div class="col-sm-3 ">
+      <%= link_to "Create new condition", new_admin_prize_condition_path, class: "btn btn-primary float-right" %>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-sm-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Creation date</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Destroy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @prize_conditions.each do | prize_condition | %>
+            <tr>
+              <td><%= prize_condition.name %></td>
+              <td><%= prize_condition.created_at %></td>
+              <td><%= link_to "Edit", edit_admin_prize_condition_path(prize_condition.id) %></td>
+              <td><%= link_to "X", admin_prize_condition_path(prize_condition.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+          <% if @prize_conditions.empty? %>
+          <tr >
+            <td colspan="4">No prize conditions created yet</td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>

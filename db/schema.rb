@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171228202249) do
+ActiveRecord::Schema.define(version: 20171228213348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "prize_conditions", force: :cascade do |t|
+    t.string "name"
+    t.bigint "prize_id"
+    t.json "rules"
+    t.boolean "overlapped"
+    t.index ["prize_id"], name: "index_prize_conditions_on_prize_id"
+  end
 
   create_table "prizes", force: :cascade do |t|
     t.string "name"
