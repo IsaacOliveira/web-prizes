@@ -8,6 +8,7 @@ class SubscribersController < ApplicationController
       @prize = subscription.prize
     rescue SubscriptionLimitError => e
       @error = e
+      render "error"
     end
   end
 

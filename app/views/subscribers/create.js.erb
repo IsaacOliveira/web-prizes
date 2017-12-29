@@ -1,5 +1,5 @@
-<% if @error.present? %>
-  alert("<%= @error %>")
+<% if @prize.present? %>
+  document.getElementById("alert-area").innerHTML  = "<%= j(render partial: 'subscribers/won_prize', locals: { prize: @prize}) %>"
 <% else %>
- alert("Created")
+  document.getElementById("alert-area").innerHTML =  "<%= j(render partial: 'subscribers/subscribed') %>"
 <% end %>
