@@ -3,16 +3,15 @@ class Subscription < ApplicationRecord
 
   def self.subscribe!(email)
     check_subscription!(email)
-    Subscription.create(last_subscription: Time.zone.now, email: email)
+    Subscription.create(last_subscription: DateTime.now, email: email)
   end
 
   def self.check_subscription!(email)
-    subscription = self.find_or_initialize_by(email: email)
-    raise SubscriptionLimitError.new("Sorry, only one subscription per day :(") if subscription.cannot_subscribe?
+    raise SubscriptionLimitError.new("Sorry, only one subscription per day :(") if self.any_subscription_today?(email)
   end
 
-  def cannot_subscribe?
-    !self.last_subscription.nil? and self.last_subscription.today?
+  def self.any_subscription_today?(email)
+    self.where(email: email, last_subscription: Date.today.beginning_of_day..Date.today.end_of_day).any?
   end
 
   def receive_prize!(prize)
