@@ -18,7 +18,13 @@
         </div>
       </div>
       <div id="all-rules-form">
-        <%= render "rules_form" %>
+        <% if @prize_condition.rules.blank? %>
+          <%= render partial: "rules_form", locals: { rule: {"number": "", operator: ""} } %>
+        <% else %>
+          <% @prize_condition.rules.each do | rule | %>
+            <%= render partial: "rules_form", locals: { rule: rule } %>
+          <% end %>
+        <% end %>
       </div>
       <%= form.submit "Submit", class: "btn btn-primary" %>
     </div>
