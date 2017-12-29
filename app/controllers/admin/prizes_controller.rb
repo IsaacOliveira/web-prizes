@@ -1,6 +1,8 @@
 module Admin
   class PrizesController < BaseController
 
+    before_action :find_prize, only: [:edit, :update, :destroy]
+
     def index
       @prizes = ListPrizes.new.execute
     end
@@ -15,21 +17,23 @@ module Admin
     end
 
     def edit
-      @prize = Prize.find(params[:id])
     end
 
     def update
-      @prize = Prize.find(params[:id])
       @prize.update_attributes(prize_params)
       redirect_to admin_prizes_path
     end
 
     def destroy
-      Prize.find(params[:id]).destroy
+      @prize.destroy
       redirect_to admin_prizes_path
     end
 
     private
+    def find_prize
+      @prize = Prize.find(params[:id])
+    end
+
     def prize_params
       params.require(:prize).permit(:name, :quantity)
     end

@@ -1,6 +1,7 @@
 module Admin
   class PrizeConditionsController < BaseController
-    OPERATORS_LIST = [["Equal","=="],["Greater than", ">"],["Multiple of", "multiple_of?"],["Smaller than", "<"]]
+
+    before_action :find_prize_condition, only: [:edit, :update, :destroy]
 
     def index
       @prize_conditions = ListPrizeConditions.new.execute
@@ -15,27 +16,30 @@ module Admin
       @prize_condition = PrizeCondition.new
       @prizes = ListPrizes.new.execute
       @prize = Prize.new
-      @operators_list = OPERATORS_LIST
+      @operators_list = PrizeCondition.operators_list
     end
 
     def edit
-      @prize_condition = PrizeCondition.find(params[:id])
       @prizes = ListPrizes.new.execute
       @prize = @prize_condition.prize
-      @operators_list = OPERATORS_LIST
+      @operators_list = PrizeCondition.operators_list
     end
 
     def update
-      @prize_condition = PrizeCondition.find(params[:id])
       @prize_condition.update_attributes(prize_condition_params)
       redirect_to admin_prize_conditions_path
     end
 
     def destroy
+      @prize_condition.destroy
       redirect_to admin_prize_conditions_path
     end
 
     private
+    def find_prize_condition
+      @prize_condition = PrizeCondition.find(params[:id])
+    end
+
     def prize_condition_params
       params.require(:prize_condition).permit(:name, :prize_id, rules: [:operator, :number])
     end
