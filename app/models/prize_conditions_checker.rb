@@ -7,11 +7,11 @@ class PrizeConditionsChecker
 
   def get_all_match_conditions
     matched = @conditions.select{ |condition| condition.matches_all_rules?(@subscription_number) }
-    matched.unshift(get_overlapped_condition).flatten.compact
+    matched.unshift(get_overlapped_conditions).flatten.compact
   end
 
   private
-  def get_overlapped_condition
+  def get_overlapped_conditions
     PrizeConditionRepository.get_overlapped
   end
 

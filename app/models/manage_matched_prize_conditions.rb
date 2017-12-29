@@ -9,6 +9,7 @@ class ManageMatchedPrizeConditions
     gets_first_condition_overlaps_others(all_conditions)
   end
 
+  private
   def gets_first_condition_overlaps_others(all_conditions)
     prize_condition = all_conditions.shift
     PrizeConditionRepository.set_overlapped(all_conditions)
