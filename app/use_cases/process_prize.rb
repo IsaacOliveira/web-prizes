@@ -2,11 +2,11 @@ class ProcessPrize
 
   def initialize(subscription:)
     @subscription = subscription
-    @matched_condition = ManageMatchedPrizeConditions.new(subscription_number: @subscription.id)
+    @condition_matched_manager = ManageMatchedPrizeConditions.new(subscription_number: @subscription.id)
   end
 
   def execute
-    prize_condition = @matched_condition.first_condition
+    prize_condition = @condition_matched_manager.first_condition
     if prize_condition.present?
       prize = prize_condition.prize
       @subscription.receive_prize!(prize)
