@@ -12,7 +12,7 @@ module Admin
         redirect_to admin_root_path
       rescue ActiveRecord::RecordNotFound
         flash.now[:danger] = 'Invalid email/password combination'
-        render 'new'
+        render action: :new
       end
     end
 
