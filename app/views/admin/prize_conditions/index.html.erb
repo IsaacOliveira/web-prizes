@@ -15,6 +15,7 @@
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Creation date</th>
+            <th scope="col">Prize</th>
             <th scope="col">Edit</th>
             <th scope="col">Destroy</th>
           </tr>
@@ -24,6 +25,7 @@
             <tr>
               <td><%= prize_condition.name %></td>
               <td><%= prize_condition.created_at %></td>
+              <td><%= prize_condition.prize_name %></td>
               <td><%= link_to "Edit", edit_admin_prize_condition_path(prize_condition.id) %></td>
               <td><%= link_to "X", admin_prize_condition_path(prize_condition.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>

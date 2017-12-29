@@ -27,7 +27,11 @@
               <td><%= prize.name %></td>
               <td><%= prize.quantity %></td>
               <td><%= link_to "Edit", edit_admin_prize_path(prize.id) %></td>
-              <td><%= link_to "X", admin_prize_path(prize.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td>
+                <% unless prize.has_conditions? %>
+                  <%= link_to "X", admin_prize_path(prize.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
           <% if @prizes.empty? %>
