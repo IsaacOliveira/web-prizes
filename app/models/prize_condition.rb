@@ -6,4 +6,8 @@ class PrizeCondition < ApplicationRecord
     OPERATORS_LIST
   end
 
+  def prize_name
+    self.prize.name
+  end
+
 end

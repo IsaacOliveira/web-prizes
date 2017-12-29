@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   root to: 'home#index'
 
   resources :subscribers, only: [:create]
@@ -7,5 +8,6 @@ Rails.application.routes.draw do
     root to: 'base#index'
     resources :prizes
     resources :prize_conditions
+    resources :sessions
   end
 end
