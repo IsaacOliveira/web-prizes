@@ -2,7 +2,7 @@ class ProcessPrize
 
   def initialize(subscription:)
     @subscription = subscription
-    @matched_condition = MatchedPrizeConditions.new(subscription_number: @subscription.id)
+    @matched_condition = ManageMatchedPrizeConditions.new(subscription_number: @subscription.id)
   end
 
   def execute

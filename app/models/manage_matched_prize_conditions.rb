@@ -1,7 +1,7 @@
-class MatchedPrizeConditions
+class ManageMatchedPrizeConditions
 
   def initialize(subscription_number:)
-    @prize_condition_checker = RulePrizeConditionsChecker.new(subscription_number: subscription_number)
+    @prize_condition_checker = PrizeConditionsChecker.new(subscription_number: subscription_number)
   end
 
   def first_condition
