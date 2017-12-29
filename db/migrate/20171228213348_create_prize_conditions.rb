@@ -5,7 +5,7 @@ class CreatePrizeConditions < ActiveRecord::Migration[5.1]
       t.references :prize
       t.json :rules
       t.boolean :overlapped
-      t.timestamp
+      t.timestamps
     end
   end
 end

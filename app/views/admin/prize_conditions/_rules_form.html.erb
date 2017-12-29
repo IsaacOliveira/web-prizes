@@ -1,0 +1,14 @@
+<div id="rule-form" class="form-group">
+  <div class="row">
+    <div class="col-md-6">
+      <label for="quantity">Operator</label>
+      <%= select_tag "rules[][operator]", options_for_select(@operators_list), class: "form-control", required: true, prompt: "Select the operator" %>
+      <small id="emailHelp" class="form-text text-muted">Define if the subscriber number is</small>
+    </div>
+    <div class="col-md-6">
+      <label for="quantity">Number</label>
+      <%= number_field_tag "rules[][number]", @prize.quantity, class: "form-control", required: true %>
+      <small id="emailHelp" class="form-text text-muted">Number to compare</small>
+    </div>
+  </div>
+</div>

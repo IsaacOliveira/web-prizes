@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20171228213348) do
     t.bigint "prize_id"
     t.json "rules"
     t.boolean "overlapped"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["prize_id"], name: "index_prize_conditions_on_prize_id"
   end
 
