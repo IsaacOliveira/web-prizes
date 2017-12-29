@@ -3,7 +3,9 @@ class SubscribersController < ApplicationController
   def create
     @error = nil
     begin
-      CreateSubscription.new(email: params[:email]).execute
+      subscription = CreateSubscription.new(email: params[:email]).execute
+      ProcessPrize.new(subscription: subscription).execute
+      @prize = subscription.prize
     rescue SubscriptionLimitError => e
       @error = e
     end
