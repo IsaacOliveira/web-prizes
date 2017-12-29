@@ -19,6 +19,9 @@
           <%= link_to "Admin", admin_root_path, class: "nav-link" %>
         </li>
       </ul>
+      <% if logged_in? %>
+        <%= link_to 'Log out', admin_session_path(current_user.id), method: :delete, class: "btn btn-outline-secondary", data: { confirm: 'Are you sure?' } %>
+      <% end %>
     </nav>
     <main class="container mt-5">
       <%= yield %>

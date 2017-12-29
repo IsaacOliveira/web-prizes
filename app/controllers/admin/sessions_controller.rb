@@ -1,5 +1,6 @@
 module Admin
   class SessionsController < BaseController
+    skip_before_action :load_session!
 
     def new
     end

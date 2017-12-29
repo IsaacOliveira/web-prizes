@@ -17,4 +17,8 @@ module Admin::SessionsHelper
     @current_user = nil
   end
 
+  def load_session!
+    redirect_to new_admin_session_path unless logged_in?
+  end
+
 end
