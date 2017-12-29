@@ -6,6 +6,7 @@ module Admin
     end
 
     def create
+      Prize.create(prize_params)
       redirect_to admin_prizes_path
     end
 
@@ -18,11 +19,19 @@ module Admin
     end
 
     def update
+      @prize = Prize.find(params[:id])
+      @prize.update_attributes(prize_params)
       redirect_to admin_prizes_path
     end
 
     def destroy
+      Prize.find(params[:id]).destroy
       redirect_to admin_prizes_path
+    end
+
+    private
+    def prize_params
+      params.require(:prize).permit(:name, :quantity)
     end
 
   end

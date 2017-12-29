@@ -7,7 +7,7 @@ module Admin
     end
 
     def create
-      @prize_condition = PrizeCondition.create(name: params[:name], prize_id: params[:prize_id], rules: params[:rules])
+      @prize_condition = PrizeCondition.create(prize_condition_params)
       redirect_to admin_prize_conditions_path
     end
 
@@ -26,11 +26,18 @@ module Admin
     end
 
     def update
+      @prize_condition = PrizeCondition.find(params[:id])
+      @prize_condition.update_attributes(prize_condition_params)
       redirect_to admin_prize_conditions_path
     end
 
     def destroy
       redirect_to admin_prize_conditions_path
+    end
+
+    private
+    def prize_condition_params
+      params.require(:prize_condition).permit(:name, :prize_id, rules: [:operator, :number])
     end
 
   end

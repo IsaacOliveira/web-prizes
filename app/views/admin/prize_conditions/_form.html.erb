@@ -1,13 +1,13 @@
-<%= form_tag admin_prize_conditions_path(@prize_condition.id) do %>
+<%= form_with model: [:admin, @prize_condition] do | form | %>
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
         <label for="name"">Name</label>
-        <%= text_field_tag :name, @prize_condition.name, class: "form-control", required: true %>
+        <%= form.text_field :name, class: "form-control", required: true %>
       </div>
       <div class="form-group">
         <label for="name"">Prize</label>
-        <%= select_tag(:prize_id, options_from_collection_for_select(@prizes, :id, :name, @prize.id), class: "form-control", prompt: "Select the prize", required: true) %>
+        <%= form.select :prize_id, options_from_collection_for_select(@prizes, :id, :name, @prize.id), {}, class: "form-control", prompt: "Select the prize", required: true  %>
       </div>
       <div class="row mt-4">
         <div class="col-md-6">
@@ -20,7 +20,7 @@
       <div id="all-rules-form">
         <%= render "rules_form" %>
       </div>
-      <%= submit_tag "Submit", class: "btn btn-primary" %>
+      <%= form.submit "Submit", class: "btn btn-primary" %>
     </div>
   </div>
 <% end %>
