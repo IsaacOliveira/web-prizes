@@ -1,9 +1,13 @@
-class Admin::BaseController < ApplicationController
-  include Admin::SessionsHelper
+module Admin
+  class BaseController < ApplicationController
+    include SessionsHelper
 
-  before_action :load_session!
+    before_action :load_session!
 
-  def index
+    def index
+      @prize_conditions = ListPrizeConditions.new.execute
+      @prizes = ListPrizes.new.execute
+    end
+
   end
-
 end

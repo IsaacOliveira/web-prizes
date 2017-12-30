@@ -1,3 +1,7 @@
-<h1>Admin</h1>
-<%= link_to "Prizes", admin_prizes_path, class: "btn btn-primary btn-lg"  %>
-<%= link_to "Prize Conditions", admin_prize_conditions_path, class: "btn btn-primary btn-lg"  %>
+<main class="container mt-5">
+  <h1>Admin</h1>
+  <hr>
+  <%= render partial: 'admin/prizes/list'  %>
+  <hr>
+  <%= render partial: 'admin/prize_conditions/list'  %>
+</main>
