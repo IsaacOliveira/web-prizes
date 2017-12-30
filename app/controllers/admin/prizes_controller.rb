@@ -10,7 +10,7 @@ module Admin
     def create
       Prize.create(prize_params)
       flash[:success] = 'Prize created'
-      redirect_to admin_prizes_path
+      redirect_to admin_root_path
     end
 
     def new
@@ -23,13 +23,13 @@ module Admin
     def update
       @prize.update_attributes(prize_params)
       flash[:success] = 'Prize updated'
-      redirect_to admin_prizes_path
+      redirect_to admin_root_path
     end
 
     def destroy
       @prize.destroy
       flash[:success] = 'Prize deleted'
-      redirect_to admin_prizes_path
+      redirect_to admin_root_path
     end
 
     private

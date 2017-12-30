@@ -32,7 +32,7 @@ RSpec.describe Admin::PrizesController, type: :controller do
       it "redirect to admin prizes page" do
         allow(Prize).to receive(:create)
         post :create, params: {  prize: prize_params }
-        expect(response).to redirect_to(admin_prizes_path)
+        expect(response).to redirect_to(admin_root_path)
       end
 
     end
@@ -57,7 +57,7 @@ RSpec.describe Admin::PrizesController, type: :controller do
         allow(Prize).to receive(:find).with("1").and_return(prize)
         allow(prize).to receive(:update_attributes)
         put :update, params: { id: "1", prize: prize_params }
-        expect(response).to redirect_to(admin_prizes_path)
+        expect(response).to redirect_to(admin_root_path)
       end
     end
 
@@ -105,7 +105,7 @@ RSpec.describe Admin::PrizesController, type: :controller do
         allow(Prize).to receive(:find).with("1").and_return(prize)
         allow(prize).to receive(:destroy)
         delete :destroy, params: { id: "1"}
-        expect(response).to redirect_to(admin_prizes_path)
+        expect(response).to redirect_to(admin_root_path)
       end
     end
   end
