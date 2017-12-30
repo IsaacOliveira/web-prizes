@@ -1,14 +1,18 @@
 <div id="rule-form" class="form-group">
   <div class="row">
-    <div class="col-md-6">
-      <label for="quantity">Operator</label>
+    <div class="col-md-5">
+      <label for="operator">Operator</label>
       <%= select_tag "prize_condition[rules[][operator]]", options_for_select(@operators_list, rule["operator"]), class: "form-control", required: true, prompt: "Select the operator" %>
       <small id="emailHelp" class="form-text text-muted">Define if the subscriber number is</small>
     </div>
-    <div class="col-md-6">
-      <label for="quantity">Number</label>
+    <div class="col-md-5">
+      <label for="number">Number</label>
       <%= number_field_tag "prize_condition[rules[][number]]", rule["number"], class: "form-control", required: true %>
       <small id="emailHelp" class="form-text text-muted">Number to compare</small>
+    </div>
+    <div class="col-md-2">
+      <label for="remove"></label>
+      <a href="javascript:;" onclick="removeRule(this)" id="add-rule" class="mt-2 btn btn-danger btn-sm float-right">Remove</a>
     </div>
   </div>
 </div>

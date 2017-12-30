@@ -8,6 +8,7 @@ Web app that allows a costumer to subscribe to our store with their email, to ge
 
 It's when a user enters the email on our landing page, each entry generates a subscription.
 The only exception is that we don't accept more than one subscription for the same email in the same day.
+
 If the subscription number matches a prize condition, it receives a prize.
 
 #### Prize
@@ -24,11 +25,11 @@ A Rule is defined by an operator and a rule number, we setup the operators: 'Equ
 
 The admin when create a prize condition, can chose one or more rules.
 
-Each rule most be satisfied to the prize condition be considered matched.
+Each rule must be satisfied to the prize condition be considered matched.
 
 ### Subscriber prizes matcher logic
 
-The logic to know if a subscriber won a prizer is:
+The logic to find if a subscriber won a prizer is:
 
 1 - We submit the subscriber number to all rules of a prize condition, if matches all rules, the prize condition is matched.
 
@@ -36,9 +37,9 @@ The logic to know if a subscriber won a prizer is:
 
 4 - We put all prize conditions matched in a list.
 
-5 - In the same list, at beginning of it, we put the overlapped prize conditions(matched before), so now we have the list of all matched conditions.
+5 - In the same list, at beginning of it, we put the overlapped prize conditions(matched before), so now we have the list of all matched and overlapped conditions ordered.
 
-6 - The first condition of the list is the one the subscriber will win the prize.
+6 - The first condition of that list is the one the subscriber will win the prize.
 
 7 - All the other left conditions matched will set as overlapped.
 
