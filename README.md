@@ -29,13 +29,15 @@ Each rule most be satisfied to the prize condition be considered matched.
 ### Subscriber prizes matcher engine
 
 The logic to know if a subscriber won a prizer is:
--We submit the subscriber number to all rules of a prize condition, if matches all rules, the prize condition is matched.
--We put all prize conditions matched in a list.
--In the same list at beginning of it, we put the overlapped prize conditions(matched before), so now we have the list of all matched conditions.
--The first condition of the list is the one the subscriber will win the prize.
--All the other conditions matched will set as overlapped.
--We set the prize to the subscriber and decrease the quantity of the prize.
--If the list of matched conditions is empty, the subscriber did not win any prize.
+
+1 - We submit the subscriber number to all rules of a prize condition, if matches all rules, the prize condition is matched.
+2 - We test the rules for all prize conditions that has prize quantity greater than zero.
+4 - We put all prize conditions matched in a list.
+5 - In the same list, at beginning of it, we put the overlapped prize conditions(matched before), so now we have the list of all matched conditions.
+6 - The first condition of the list is the one the subscriber will win the prize.
+7 - All the other left conditions matched will set as overlapped.
+8 - We set the prize to the subscriber and decrease the quantity of the prize.
+9 - If the list of matched conditions is empty, the subscriber did not win any prize.
 
 
 # Running the project
