@@ -26,7 +26,7 @@ The admin when create a prize condition, can chose one or more rules.
 
 Each rule most be satisfied to the prize condition be considered matched.
 
-### Subscriber prizes matcher engine
+### Subscriber prizes matcher logic
 
 The logic to know if a subscriber won a prizer is:
 
@@ -46,6 +46,23 @@ The logic to know if a subscriber won a prizer is:
 
 9 - If the list of matched conditions is empty, the subscriber did not win any prize.
 
+## Admin
+
+An admin site exists, is acessible by the link on top bar, after you login you be redirected to admin home
+
+In admin home we have two lists, with prizes and prize conditions, that shows all the infos and offer actions to be done.
+
+New prizes, and prizes conditions can be created and existing ones can be edited or deleted.
+
+A prize with at least one prize condition associated can not be deleted.
+
+#### Creating and Editing Prize conditions
+
+In the prize condition form you need to chose which Prize will be given with that condition, and by which rules.
+
+You must chose the operator and rule number of each rule.
+
+A prize condition can have one or more rules, click the add other rule to show other rule form.
 
 # Running the project
 
