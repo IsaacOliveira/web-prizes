@@ -4,7 +4,7 @@ RSpec.describe Subscription, type: :model do
 
   describe '.subscribe!' do
 
-    let!(:subscription){ Subscription.create(email: "test@test.com", last_subscription: DateTime.now) }
+    let!(:subscription){ Subscription.create(email: "test@test.com", last_subscription: Date.today) }
     context 'with other subscription on the same day for the email' do
       it "raises subscription error" do
         expect{ Subscription.subscribe!("test@test.com") }.to raise_error(SubscriptionLimitError)
@@ -23,7 +23,7 @@ RSpec.describe Subscription, type: :model do
 
   describe '.check_subscription' do
 
-    let!(:subscription){ Subscription.create(email: "test@test.com", last_subscription: DateTime.now) }
+    let!(:subscription){ Subscription.create(email: "test@test.com", last_subscription: Date.today) }
     context 'with other subscription on the same day for the email' do
       it "raises subscription error" do
         expect{ Subscription.check_subscription!("test@test.com") }.to raise_error(SubscriptionLimitError)
@@ -40,7 +40,7 @@ RSpec.describe Subscription, type: :model do
 
   describe '.any_subscription_today?' do
 
-    let!(:subscription){ Subscription.create(email: "test@test.com", last_subscription: DateTime.now) }
+    let!(:subscription){ Subscription.create(email: "test@test.com", last_subscription: Date.today) }
     context 'with other subscription on the same day for the email' do
       it "return true" do
         expect(Subscription.any_subscription_today?("test@test.com")).to be_truthy
