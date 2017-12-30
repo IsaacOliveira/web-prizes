@@ -1,6 +1,6 @@
 # Web Prizes App
 
-Web app that allows a costumer to subscribe to our store with their email, to get news, and apply for prizes
+Web app that allows a costumer to subscribe to our store with their email, to get news, and apply for prizes.
 
 ### Important concepts
 
@@ -16,20 +16,32 @@ It's defined by a name and a quantity, each time a prize is given to a subscribe
 
 #### Prize Condition
 
-Each prize condition has a set of rules that are applied to against the subscription number, if all rules matches the number, the prize condition matches, a prize condition also has a prize, which will be given to the subscriber
+Each prize condition has a set of rules that are applied to against the subscription number, if all rules matches the number, the prize condition matches, a prize condition also has a prize, which will be given to the subscriber.
 
 #### Rule
 
-A Rule is defined by an operator and a rule number, we setup the operators: 'Equal', 'Greater than', 'Multiple of', 'Smaller than', all relative to rule number against the subscriber number.
-The admin when creates a prize condition, can chose one or more rules, each rule most be satisfied, so the prize condition be considered matched
+A Rule is defined by an operator and a rule number, we setup the operators: 'Equal', 'Greater than', 'Multiple of', 'Smaller than', all rules are relative to the rule number against the subscriber number.
+
+The admin when create a prize condition, can chose one or more rules.
+
+Each rule most be satisfied to the prize condition be considered matched.
 
 ### Subscriber prizes matcher engine
 
-TODO
+The logic to know if a subscriber won a prizer is:
+-We submit the subscriber number to all rules of a prize condition, if matches all rules, the prize condition is matched.
+-We put all prize conditions matched in a list.
+-In the same list at beginning of it, we put the overlapped prize conditions(matched before), so now we have the list of all matched conditions.
+-The first condition of the list is the one the subscriber will win the prize.
+-All the other conditions matched will set as overlapped.
+-We set the prize to the subscriber and decrease the quantity of the prize.
+-If the list of matched conditions is empty, the subscriber did not win any prize.
 
-#Running the project
+
+# Running the project
 
 A running instance of project is available at: https://web-prizes.herokuapp.com
+
 To run local will just need to clone the project then run:
 
 ```
@@ -37,6 +49,7 @@ bundle install
 rake db:setup
 rails s
 ```
+
 Then access: http://localhost:3000
 
 # Running the Specs
